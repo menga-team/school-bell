@@ -57,6 +57,7 @@ if __name__ == "__main__":
         now = datetime.now()
         s_now = now.strftime('%H:%M')
         if s_now in ring_at:
+            print("PLAYING...")
             playsound("chime.wav")
             ring_at.remove(s_now)
         time.sleep(1)
