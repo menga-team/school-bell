@@ -2,7 +2,6 @@ import requests
 import os
 from datetime import datetime, timedelta
 import json
-from playsound import playsound
 import time
 
 ring_at = []
@@ -58,7 +57,7 @@ if __name__ == "__main__":
         s_now = now.strftime('%H:%M')
         if s_now in ring_at:
             print("PLAYING...")
-            playsound("chime.wav")
+            os.system("aplay chime.wav")
             ring_at.remove(s_now)
         time.sleep(1)
         if now.day != datetime.now().day:
