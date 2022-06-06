@@ -49,8 +49,15 @@ def get_times():
             ring_at.append(get_time(lesson['timeToEndObject']))
 
 
+def get_times_safe():
+    try:
+        get_times()
+    except KeyError:
+        print("Skipping Saturaday/Sunday")
+
+
 if __name__ == "__main__":
-    get_times()
+    get_times_safe()
     print(ring_at)
     while True:
         now = datetime.now()
@@ -61,5 +68,5 @@ if __name__ == "__main__":
             ring_at.remove(s_now)
         time.sleep(1)
         if now.day != datetime.now().day:
-            get_times()
+            get_times_safe()
             print(ring_at)
